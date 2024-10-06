@@ -19,7 +19,7 @@ function App() {
             variant="ghost"
             className="w-full h-14 text-lg 3text-lg"
           >
-            <Link to="/manual">???</Link>
+            <Link to="/manual">Upload Manually</Link>
           </Button>
         </div>
       </div>
