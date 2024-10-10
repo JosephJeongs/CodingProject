@@ -11,14 +11,14 @@ function App() {
         </h1>
         <Button className="w-full h-14 text-lg" size="lg">
           <Upload className="mr-2 h-5 w-5" />
-          Upload Image
+          <Link to="/upload">Upload</Link>
         </Button>
         <div className="text-center ">
           <Button
             asChild
             variant="ghost"
             className="w-full h-14 text-lg 3text-lg"
-          >
+            >
             <Link to="/manual">Upload Manually</Link>
           </Button>
         </div>

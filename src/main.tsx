@@ -14,9 +14,10 @@ const router = createBrowserRouter([
     path: "/manual",
     element: <ManualUpload />,
   },
-  // {
-  //  TODO: Fill in the path for the new blank page here that will be used for photo upload
-  // },
+  {
+    path: "/upload",
+    element: <Upload />,
+  },
 ]);
 
 createRoot(document.getElementById("root")!).render(
