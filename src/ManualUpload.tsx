@@ -24,18 +24,19 @@ function ManualUpload() {
         </h1>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="make">Car Make</Label>
-            {/* <???
+            <Label htmlFor="make">Car Make</Label><br></br>
+            <input type="text" 
+              
               id="make"
               value={carInfo.make}
               onChange={(e) => setCarInfo({ ...carInfo, make: e.target.value })}
               placeholder="e.g., Toyota"
               required
-            /> */}
+            />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="model">Car Model</Label>
-            {/* <???
+            <Label htmlFor="model">Car Model</Label><br></br>
+            <input type="text"
               id="model"
               value={carInfo.model}
               onChange={(e) =>
@@ -43,21 +44,21 @@ function ManualUpload() {
               }
               placeholder="e.g., Corolla"
               required
-            /> */}
+            />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="year">Year</Label>
-            {/* <???
+            <Label htmlFor="year">Year</Label><br></br>
+            <input type="text"
               id="year"
               value={carInfo.year}
               onChange={(e) => setCarInfo({ ...carInfo, year: e.target.value })}
               placeholder="e.g., 2018"
               required
-            /> */}
+            />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="problem">Describe the Problem</Label>
-            {/* <???
+            <Label htmlFor="problem">Describe the Problem</Label><br></br>
+            <input type="text"
               id="problem"
               value={carInfo.problem}
               onChange={(e) =>
@@ -65,11 +66,11 @@ function ManualUpload() {
               }
               placeholder="Describe the issue you're experiencing with your car..."
               required
-            /> */}
+            />
           </div>
-          {/* <??? type="submit" className="w-full">
+          <button type="submit" className="w-full">
             Submit
-          </???> */}
+          </button>
         </form>
       </div>
     </div>

@@ -4,6 +4,8 @@ import App from "./App.tsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ManualUpload from "./ManualUpload.tsx";
+import Upload from "./Upload.tsx";
+
 
 const router = createBrowserRouter([
   {
