@@ -1,5 +1,8 @@
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
+import {Input} from "@/components/ui/input";
+import {Button} from "@/components/ui/button";
+import {Textarea} from "@/components/ui/textarea";
 
 function ManualUpload() {
   const [carInfo, setCarInfo] = useState({
@@ -25,8 +28,7 @@ function ManualUpload() {
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="make">Car Make</Label><br></br>
-            <input type="text" 
-              
+            <Input type="text" 
               id="make"
               value={carInfo.make}
               onChange={(e) => setCarInfo({ ...carInfo, make: e.target.value })}
@@ -36,7 +38,7 @@ function ManualUpload() {
           </div>
           <div className="space-y-2">
             <Label htmlFor="model">Car Model</Label><br></br>
-            <input type="text"
+            <Input type="text"
               id="model"
               value={carInfo.model}
               onChange={(e) =>
@@ -48,7 +50,7 @@ function ManualUpload() {
           </div>
           <div className="space-y-2">
             <Label htmlFor="year">Year</Label><br></br>
-            <input type="text"
+            <Input type="text"
               id="year"
               value={carInfo.year}
               onChange={(e) => setCarInfo({ ...carInfo, year: e.target.value })}
@@ -58,7 +60,7 @@ function ManualUpload() {
           </div>
           <div className="space-y-2">
             <Label htmlFor="problem">Describe the Problem</Label><br></br>
-            <input type="text"
+            <Textarea
               id="problem"
               value={carInfo.problem}
               onChange={(e) =>
@@ -68,9 +70,9 @@ function ManualUpload() {
               required
             />
           </div>
-          <button type="submit" className="w-full">
+          <Button type="submit" className="w-full">
             Submit
-          </button>
+          </Button>
         </form>
       </div>
     </div>
