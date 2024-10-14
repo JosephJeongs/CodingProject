@@ -9,17 +9,19 @@ function App() {
         <h1 className="text-3xl font-bold text-center text-foreground">
           CarGPT
         </h1>
-        <Button className="w-full h-14 text-lg" size="lg">
-          <Upload className="mr-2 h-5 w-5" />
-          <Link to="/upload">Upload</Link>
+        <Button asChild className="w-full h-14 text-lg" size="lg">
+          <Link to="/upload">
+            <Upload className="mr-2 h-5 w-5" />
+            Upload Image
+          </Link>
         </Button>
         <div className="text-center ">
           <Button
             asChild
             variant="ghost"
             className="w-full h-14 text-lg 3text-lg"
-            >
-            <Link to="/manual">Upload Manually</Link>
+          >
+            <Link to="/manual">Type in manually</Link>
           </Button>
         </div>
       </div>

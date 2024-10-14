@@ -4,8 +4,8 @@ import App from "./App.tsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ManualUpload from "./ManualUpload.tsx";
-import Upload from "./Upload.tsx";
-
+import Results from "./Results.tsx";
+import UploadImage from "./UploadImage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +18,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/upload",
-    element: <Upload />,
+    element: <UploadImage />,
+  },
+  {
+    path: "/results",
+    element: <Results />,
   },
 ]);
 
