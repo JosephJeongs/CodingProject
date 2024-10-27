@@ -39,14 +39,17 @@ const UploadAndDisplayImage = () => {
         messages: [
           {
             role: "system",
-            content: "", //TODO: FILL IN SYSTEM INSTRUCTIONS
+            content:
+              "You are a helpful assistant that identifies what might have gone wrong with the car given the photo of the car area with the problem.",
           },
           {
             role: "user",
             content: [
               {
                 type: "text",
-                text: "", //TODO: FILL IN USER INSTRUCTIONS
+                text: `
+          Please respond with a JSON object with the following keys: "likelyCause", "estimatedCost". likelyCause should be a list of [{issue: string, severity: string}]. Severity should ALWAYS be "critical", "moderate", or  "minor". Critical issues should come first.
+          Make estimatedCost a simple range like "$XXX-$XXX"`,
               },
               {
                 type: "image_url",
@@ -57,8 +60,8 @@ const UploadAndDisplayImage = () => {
             ],
           },
         ],
-        // TODO: SOMETHING ELSE YOU CAN PUT HERE TO FORCE JSON RESPONSE.
-        // HINT: Look at https://platform.openai.com/docs/guides/structured-outputs
+        response_format: { type: "json_object" },
+        max_tokens: 300,
       });
       console.log(response.choices[0].message.content);
       navigate("/results", { state: response.choices[0].message.content });

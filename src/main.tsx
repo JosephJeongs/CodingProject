@@ -1,11 +1,12 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
+// import Photo from "./Photo.tsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ManualUpload from "./ManualUpload.tsx";
 import Results from "./Results.tsx";
-import UploadImage from "./UploadImage.tsx";
+import UploadAndDisplayImage from "./UploadImage.tsx";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/upload",
-    element: <UploadImage />,
+    element: <UploadAndDisplayImage />,
   },
   {
     path: "/results",

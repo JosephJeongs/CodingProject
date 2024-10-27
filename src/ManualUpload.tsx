@@ -34,20 +34,22 @@ function ManualUpload() {
       messages: [
         {
           role: "system",
-          content: "", //TODO: FILL IN SYSTEM INSTRUCTIONS
+          content:
+            "You are a helpful assistant that identifies what might have gone wrong with the car given the make, model, year and problem ",
         },
         {
           role: "user",
-          content: `Model of the car is "${carInfo.model}",....`, //TODO: FILL IN USER INSTRUCTIONS
+          content: `Model of the car is "${carInfo.model}", make is "${carInfo.make}", year is "${carInfo.year}" and the problem is "${carInfo.problem}". 
+          Please respond with a JSON object with the following keys: "make", "model", "year", "problem", "likelyCause", "estimatedCost". likelyCause should be a list of [{issue: string, severity: string}]. Severity should ALWAYS be "critical", "moderate", or  "minor". Critical issues should come first.
+          Make estimatedCost a simple range like "$XXX-$XXX"`,
         },
       ],
-      // TODO: SOMETHING ELSE YOU CAN PUT HERE TO FORCE JSON RESPONSE.
-      // HINT: Look at https://platform.openai.com/docs/guides/structured-outputs
+      response_format: { type: "json_object" },
     });
 
     console.log(response.choices[0].message.content);
     setIsLoading(false);
-    navigate("/results", { state: response.choices[0].message.content }); // navigate to results page with the response
+    navigate("/results", { state: response.choices[0].message.content });
   };
 
   return (
