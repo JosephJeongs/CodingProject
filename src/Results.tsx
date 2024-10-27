@@ -2,10 +2,9 @@ import { useLocation } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { MapPin, Navigation, AlertCircle } from "lucide-react";
+import { MapPin, Navigation } from "lucide-react";
 import { useEffect, useState } from "react";
 import Map from "./components/Map";
-import { Alert, AlertDescription } from "@/components/ui/alert";
 
 interface Mechanic {
   name: string;
@@ -38,23 +37,8 @@ function Results() {
   );
   const [mechanics, setMechanics] = useState<Mechanic[]>([]);
   const [loading, setLoading] = useState(true);
-  const [locationError, setLocationError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Check if geolocation is supported
-    if (!navigator.geolocation) {
-      setLocationError("Geolocation is not supported by your browser");
-      setLoading(false);
-      return;
-    }
-
-    // Add options for better geolocation accuracy
-    const options = {
-      enableHighAccuracy: true,
-      timeout: 10000,
-      maximumAge: 0,
-    };
-
     navigator.geolocation.getCurrentPosition(
       async (position) => {
         const coords: [number, number] = [
@@ -129,33 +113,14 @@ function Results() {
           setMechanics(nearestMechanics);
         } catch (error) {
           console.error("Error fetching nearby mechanics:", error);
-          setLocationError("Failed to fetch nearby mechanics");
-          setLoading(false);
         }
+
+        setLoading(false);
       },
       (error) => {
         console.error("Error getting location:", error);
-        let errorMessage = "Unable to get your location. ";
-
-        switch (error.code) {
-          case error.PERMISSION_DENIED:
-            errorMessage +=
-              "Please enable location permissions in your browser settings.";
-            break;
-          case error.POSITION_UNAVAILABLE:
-            errorMessage += "Location information is unavailable.";
-            break;
-          case error.TIMEOUT:
-            errorMessage += "Location request timed out.";
-            break;
-          default:
-            errorMessage += "An unknown error occurred.";
-        }
-
-        setLocationError(errorMessage);
         setLoading(false);
-      },
-      options
+      }
     );
   }, []);
 
@@ -185,14 +150,6 @@ function Results() {
         <h1 className="text-3xl font-bold text-center text-foreground">
           CarGPT Analysis Results
         </h1>
-
-        {/* Add error message display */}
-        {locationError && (
-          <Alert variant="destructive">
-            <AlertCircle className="h-4 w-4" />
-            <AlertDescription>{locationError}</AlertDescription>
-          </Alert>
-        )}
 
         <Card>
           <CardHeader>
